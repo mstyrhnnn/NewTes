@@ -8,7 +8,7 @@ import { UpdateFleetDto } from './dto/update-fleet.dto';
 import { GetFleetPaginationDto } from './dto/get-fleet-pagination.dto';
 
 import { UserEntity } from '../users/entities/user.entity';
-import { UserRoleEnum } from '../users/enums/user.role.enum.ts';
+import { UserRoleEnum } from '../users/enums/user.role.enum';
 
 @Injectable()
 export class FleetMitraService {

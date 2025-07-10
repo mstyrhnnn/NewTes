@@ -4,7 +4,7 @@ import { UpdateCustomerDto } from './dto/update-customer.dto';
 import { UsersService } from '../users/users.service';
 import { UserEntity } from '../users/entities/user.entity';
 import { GetCustomerPaginationDto } from './dto/get-customer-pagination.dto';
-import { UserRoleEnum } from 'src/modules/users/enums/user.role.enum.ts';
+import { UserRoleEnum } from 'src/modules/users/enums/user.role.enum';
 import { UserIdCards } from '../users/entities/user-id-cards.entity';
 import { UserStatusEnum } from '../users/enums/user.status.enum';
 import { AdditionalDataDto } from '../users/entities/additional-data.dto';

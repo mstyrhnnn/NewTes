@@ -4,7 +4,7 @@ import { UpdateDriverDto } from './dto/update-driver.dto';
 import { UsersService } from '../users/users.service';
 import { UserEntity } from '../users/entities/user.entity';
 import { GetDriverPaginationDto } from './dto/get-driver-pagination.dto';
-import { UserRoleEnum } from 'src/modules/users/enums/user.role.enum.ts';
+import { UserRoleEnum } from 'src/modules/users/enums/user.role.enum';
 import { UserStatusEnum } from '../users/enums/user.status.enum';
 
 @Injectable()

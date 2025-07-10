@@ -9,7 +9,7 @@ import { QontakService } from '../qontak/qontak.service';
 import { QONTAK_WA_BLAS_PARTNER_DRIVER } from 'src/common/constant/qontak.constans';
 import { SendWaRawDto } from './dto/send-wa-driver.dto';
 import { SendWaDto } from './dto/send-wa.dto';
-import { UserRoleEnum } from '../users/enums/user.role.enum.ts';
+import { UserRoleEnum } from '../users/enums/user.role.enum';
 
 @Injectable()
 export class WaBlasService {

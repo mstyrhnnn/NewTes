@@ -1,7 +1,7 @@
 import { Base } from "../../../common/database/base.entity";
 import { FleetsEntity } from "../../fleets/entities/fleet.entity";
 import { UserEntity } from "../../users/entities/user.entity";
-import { AfterLoad, Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
+import { AfterLoad, Column, Entity, JoinColumn, ManyToOne, OneToMany,  OneToOne,  } from "typeorm";
 import { OrderPaymentStatusEnum } from "../enums/order.payment-status.enum";
 import { InsuranceEntity } from "../../insurances/entities/insurances.entity";
 import { IsNumber, IsOptional } from "class-validator";
@@ -14,6 +14,9 @@ import { RequestStatusEnum } from "src/modules/requests/enums/request.status.enu
 import { UserStatusEnum } from "../../users/enums/user.status.enum";
 import { OrderAdditionalItems } from "../interface/order-additionals.interface";
 import { RequestLogsTypeEnum } from "src/modules/requests/enums/request-logs.type.enum";
+import { BusserEntity } from '../../busser/busser.entity';
+
+
 
 @Entity({
     name: 'orders',
@@ -174,6 +177,10 @@ export class OrderEntity extends Base {
 
     @IsOptional()
     order_status_text: string;
+
+    @OneToOne(() => BusserEntity, busser => busser.order)
+    busser: BusserEntity;
+
 
     @AfterLoad()
     setVirtualColumn() {

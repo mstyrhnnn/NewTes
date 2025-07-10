@@ -16,7 +16,7 @@ import { GetFleetCalendarPaginationDto } from './dto/get-fleet-calendar-paginati
 import { OrderApprovalStatusEnum } from '../orders/enums/order.status.enum';
 import { FleetComission } from './model/fleet-comission.model';
 import { UsersService } from '../users/users.service';
-import { UserRoleEnum } from '../users/enums/user.role.enum.ts';
+import { UserRoleEnum } from '../users/enums/user.role.enum';
 import { DiscountService } from '../discount/discount.service';
 import { DiscountEntity } from '../discount/entities/discount.entity';
 

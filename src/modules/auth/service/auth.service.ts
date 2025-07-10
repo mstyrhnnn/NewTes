@@ -7,7 +7,7 @@ import { AuthGetDto } from '../dto/auth-get.dto';
 import { DeviceTokensService } from 'src/modules/device_tokens/device_token.service';
 import { AuthRegisterDto } from '../dto/auth-register.dto';
 import { UserIdCards } from 'src/modules/users/entities/user-id-cards.entity';
-import { UserRoleEnum } from 'src/modules/users/enums/user.role.enum.ts';
+import { UserRoleEnum } from 'src/modules/users/enums/user.role.enum';
 import { AuthForgotPasswordDto } from '../dto/auth-forgot-password.dto';
 import { AuthResetPasswordDto } from '../dto/auth-reset-password.dto';
 

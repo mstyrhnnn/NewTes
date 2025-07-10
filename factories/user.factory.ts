@@ -1,7 +1,7 @@
 import { setSeederFactory } from "typeorm-extension";
 import { UserEntity } from "../src/modules/users/entities/user.entity";
 import { UserGenderEnum } from "../src/modules/users/enums/user.gender.enum";
-import { UserRoleEnum } from "../src/modules/users/enums/user.role.enum.ts";
+import { UserRoleEnum } from "../src/modules/users/enums/user.role.enum";
 import { PasswordHashHelper } from "../src/config/helper/hash/password-hash.helper";
 import { UserIdCards } from "src/modules/users/entities/user-id-cards.entity";
 import { UserStatusEnum } from "src/modules/users/enums/user.status.enum";

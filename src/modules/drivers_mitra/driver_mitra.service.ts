@@ -8,7 +8,7 @@ import { GetDriverPaginationDto } from '../drivers/dto/get-driver-pagination.dto
 
 import { FleetMitra } from '../fleets_mitra/entities/fleet_mitra.entity';
 import { UserEntity } from '../users/entities/user.entity';
-import { UserRoleEnum } from '../users/enums/user.role.enum.ts';
+import { UserRoleEnum } from '../users/enums/user.role.enum';
 
 @Injectable()
 export class DriverMitraService {

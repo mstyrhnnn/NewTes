@@ -6,7 +6,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { LedgerCategoriesEntity } from './entities/ledger-categories.entity';
 import { GetLedgerFleetDto } from './dto/get-ledger-fleet.dto';
-import { UserRoleEnum } from '../users/enums/user.role.enum.ts';
+import { UserRoleEnum } from '../users/enums/user.role.enum';
 import { PaginationHelper } from 'src/config/helper/pagination/pagination.helper';
 import { GetLedgerRecapDto } from './dto/get-ledger-recap.dto';
 import { OrderEntity } from '../orders/entities/orders.entity';

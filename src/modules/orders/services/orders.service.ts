@@ -40,7 +40,7 @@ import { OrderRequestDto } from '../dto/order-request.dto';
 import { CreateOrderCustomerDto } from '../dto/create-order.customer.dto';
 import { RejectOrderDto } from '../dto/reject-order.dto';
 import { RequestStatusEnum } from 'src/modules/requests/enums/request.status.enum';
-import { UserRoleEnum } from 'src/modules/users/enums/user.role.enum.ts';
+import { UserRoleEnum } from 'src/modules/users/enums/user.role.enum';
 import { PurchaseInvoiceResponse } from 'src/common/payment/paper/response/purchase-invoice.response';
 import { SentryHelper } from 'src/config/helper/logging/sentry.helper';
 import { FleetTypeEnum } from 'src/modules/fleets/enums/fleet.type.enum';

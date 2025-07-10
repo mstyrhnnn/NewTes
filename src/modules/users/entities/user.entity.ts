@@ -1,7 +1,7 @@
 import { Base } from "../../../common/database/base.entity";
 import { AfterLoad, BeforeInsert, Column, Entity, Index, OneToMany } from "typeorm";
 import { UserGenderEnum } from "../enums/user.gender.enum";
-import { UserRoleEnum } from "../enums/user.role.enum.ts";
+import { UserRoleEnum } from "../enums/user.role.enum";
 import { USER_EMAIL_UNIQUE_INDEX } from "src/common/constant/db-index.key.constant";
 import { UserIdCards } from "./user-id-cards.entity";
 import { UserStatusEnum } from "../enums/user.status.enum";

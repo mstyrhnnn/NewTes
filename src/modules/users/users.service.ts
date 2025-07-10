@@ -15,7 +15,7 @@ import { CREATED_USER_MESSAGE, NEED_OTHER_DATA, REJECTED_USER_MESSAGE, VERIFIED_
 import { QontakService } from '../qontak/qontak.service';
 import { QONTAK_ACCEPTED_ORDER_USER, QONTAK_ACCOUNT_ACTIVE, QONTAK_AFTER_SEWA, QONTAK_BEFORE_SEWA, QONTAK_CANCEL_ORDER, QONTAK_CREATED_USER_MESSAGE, QONTAK_FORGOT_PASSWORD, QONTAK_REJECTED_ORDER, QONTAK_REJECTED_USER_MESSAGE, QONTAK_VERIFICATION_ACCOUNT, QONTAK_VERIFICATION_WITH_ADDITIONAL_DATA,  } from 'src/common/constant/qontak.constans';
 
-import { UserRoleEnum } from './enums/user.role.enum.ts';
+import { UserRoleEnum } from './enums/user.role.enum';
 import { USER_CACHE_COUNT_KEY } from 'src/common/constant/cache.key.constant';
 import { USER_CACHE_TTL } from 'src/common/constant/cache.ttl.constant';
 import { UserTokenEntity } from './entities/user-token.entity';

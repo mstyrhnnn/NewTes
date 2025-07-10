@@ -5,7 +5,7 @@ import { ApiBasicAuth, ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/config/guard/jwt-auth.guard';
 import { AuthGetDto } from './dto/auth-get.dto';
 import { AuthRegisterDto } from './dto/auth-register.dto';
-import { UserRoleEnum } from '../users/enums/user.role.enum.ts';
+import { UserRoleEnum } from '../users/enums/user.role.enum';
 import { AuthForgotPasswordDto } from './dto/auth-forgot-password.dto';
 import { AuthResetPasswordDto } from './dto/auth-reset-password.dto';
 import { BasicAuthGuard } from 'src/config/guard/basic-auth.guard';

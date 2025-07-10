@@ -1,4 +1,4 @@
-import { UserRoleEnum } from '../src/modules/users/enums/user.role.enum.ts';
+import { UserRoleEnum } from '../src/modules/users/enums/user.role.enum';
 import { PasswordHashHelper } from '../src/config/helper/hash/password-hash.helper';
 import { UserEntity } from '../src/modules/users/entities/user.entity';
 import { DataSource } from 'typeorm';

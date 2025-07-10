@@ -1,5 +1,5 @@
 import { UserEntity } from 'src/modules/users/entities/user.entity';
-import { UserRoleEnum } from 'src/modules/users/enums/user.role.enum.ts';
+import { UserRoleEnum } from 'src/modules/users/enums/user.role.enum';
 import { DataSource } from 'typeorm';
 import { Seeder, SeederFactoryManager } from 'typeorm-extension';
 

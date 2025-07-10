@@ -3,7 +3,7 @@ import { CreateOwnerDto } from './dto/create-owner.dto';
 import { UpdateOwnerDto } from './dto/update-owner.dto';
 import { UsersService } from '../users/users.service';
 import { UserEntity } from '../users/entities/user.entity';
-import { UserRoleEnum } from '../users/enums/user.role.enum.ts';
+import { UserRoleEnum } from '../users/enums/user.role.enum';
 import { UserStatusEnum } from '../users/enums/user.status.enum';
 import { GetOwnerPaginationDto } from './dto/get-owner-pagination.dto';
 

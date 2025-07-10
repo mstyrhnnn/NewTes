@@ -7,7 +7,7 @@ import { Brackets, DataSource, Repository, SelectQueryBuilder } from 'typeorm';
 import { GetRequestPaginationDto } from '../dto/get-request-pagination.dto';
 import { PaginationHelper } from 'src/config/helper/pagination/pagination.helper';
 import { UsersService } from 'src/modules/users/users.service';
-import { UserRoleEnum } from 'src/modules/users/enums/user.role.enum.ts';
+import { UserRoleEnum } from 'src/modules/users/enums/user.role.enum';
 import { CreateRequestLogDto } from '../dto/create-request-log.dto';
 import { RequestLogsEntity } from '../entities/request-log.entity';
 import { RequestLogPhotosEntity } from '../entities/request-log-photo.entity';
