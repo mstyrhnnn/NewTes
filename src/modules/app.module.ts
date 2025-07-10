@@ -28,6 +28,7 @@ import { PdfModule } from './pdfdriver/pdf.module';
 import { DriverMitraModule } from './drivers_mitra/driver_mitra.module';
 import { FleetMitraModule } from './fleets_mitra/fleet_mitra.module';
 import { WaBlasModule } from './wa_blas/wa_blas.module';
+import { BusserModule } from './busser/busser.module'; 
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -40,30 +41,31 @@ import { WaBlasModule } from './wa_blas/wa_blas.module';
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: process.env.JWT_EXPIRATION },
     }),
+    BusserModule,
     UsersModule,
     AuthModule,
     DriversModule,
-   // DriverReimburseModule,
+    DriverReimburseModule,
     CustomersModule,
     FleetsModule,
-    // RequestsModule,
-    // DeviceTokensModule,
-    // FirebaseModule,
-    // NotificationsModule,
-    // StoragesModule,
-    // OrdersModule,
-    // LocationsModule,
-    // InsurancesModule,
-    // MailModule,
-    // QontakModule,
-    // OwnersModule,
-    // LedgersModule,
-    // DiscountModule,
-    // TaskModule,
-    // PdfModule,
-    // DriverMitraModule,
-    // FleetMitraModule,
-    // WaBlasModule
+    RequestsModule,
+    DeviceTokensModule,
+    FirebaseModule,
+    NotificationsModule,
+    StoragesModule,
+    OrdersModule,
+    LocationsModule,
+    InsurancesModule,
+    MailModule,
+    QontakModule,
+    OwnersModule,
+    LedgersModule,
+    DiscountModule,
+    TaskModule,
+    PdfModule,
+    DriverMitraModule,
+    FleetMitraModule,
+    WaBlasModule
   ],
 })
 export class AppModule { }

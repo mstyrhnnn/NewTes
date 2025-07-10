@@ -15,7 +15,7 @@ export class BusserEntity {
   id: number;
 
   @OneToOne(() => OrderEntity)
-  @JoinColumn()
+  @JoinColumn({ name: 'order_id' }) 
   order: OrderEntity;
 
   @Column({

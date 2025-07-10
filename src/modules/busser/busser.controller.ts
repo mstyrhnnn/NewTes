@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body, ParseIntPipe, Patch, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, ParseIntPipe, Patch, UseGuards, BadRequestException  } from '@nestjs/common';
 import { BusserService } from './busser.service';
 import { BusserEntity, BusserStatusEnum } from './busser.entity';
 // import { AuthGuard } from '@nestjs/passport'; // Contoh jika Anda pakai authentikasi
@@ -7,6 +7,12 @@ import { BusserEntity, BusserStatusEnum } from './busser.entity';
 // @UseGuards(AuthGuard('jwt')) // Sebaiknya semua endpoint ini diproteksi
 export class BusserController {
   constructor(private readonly busserService: BusserService) {}
+
+  @Get('trigger-check')
+  async triggerCheck() {
+    this.busserService.checkAndUpdateStatuses();
+    return { message: 'Pengecekan status busser telah dipicu. Lihat log di konsol.' };
+  }
 
   @Get('status/:status')
   async getBussersByStatus(@Param('status') status: BusserStatusEnum): Promise<BusserEntity[]> {
