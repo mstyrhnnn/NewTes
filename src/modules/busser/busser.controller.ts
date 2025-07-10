@@ -1,7 +1,8 @@
 import { Controller, Get, Param, Post, Body, ParseIntPipe, Patch, UseGuards, BadRequestException  } from '@nestjs/common';
 import { BusserService } from './busser.service';
-import { BusserEntity, BusserStatusEnum } from './busser.entity';
+import { BusserEntity } from './busser.entity';
 import { BusserDetailsDto } from './dto/busser-details.dto';
+import { BusserStatusEnum } from './enums/busser.status.enum'; 
 
 @Controller('busser')
 export class BusserController {

@@ -1,10 +1,11 @@
 import { Injectable, Logger, NotFoundException  } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { BusserEntity, BusserStatusEnum } from './busser.entity';
+import { BusserEntity} from './busser.entity';
 import { OrderEntity } from '../orders/entities/orders.entity';
 import { OrderApprovalStatusEnum } from '../orders/enums/order.status.enum';
 import { BusserDetailsDto } from './dto/busser-details.dto';
+import { BusserStatusEnum } from './enums/busser.status.enum'; 
 
 @Injectable()
 export class BusserService {
