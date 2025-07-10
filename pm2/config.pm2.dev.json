@@ -1,0 +1,13 @@
+{
+    "apps": [
+        {
+            "script": "dist/src/main.js",
+            "instances": "1",
+            "exec_mode": "cluster",
+            "name": "dev-primary",
+            "env": {
+                "PORT": 3000
+            }
+        }
+    ]
+}

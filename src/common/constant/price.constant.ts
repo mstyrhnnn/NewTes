@@ -1,0 +1,7 @@
+export const DRIVER_FEE_IN_TOWN = 150000;
+export const DRIVER_FEE_OUT_TOWN = 250000;
+export const CAR_WEEKEND_PRICE = 50000;
+export const MOTORCYCLE_WEEKEND_PRICE = 30000;
+export const DEFAULT_OUT_OF_TOWN_FEE = 100000;
+export const MOTORCYCLE_OUT_OF_TOWN_FEE = 50000;
+export const CAR_OUT_OF_TOWN_FEE = 100000;
