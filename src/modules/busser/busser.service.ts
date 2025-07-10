@@ -4,10 +4,10 @@ import { Repository } from 'typeorm';
 import { BusserEntity, BusserStatusEnum } from './busser.entity';
 import { OrderEntity } from '../orders/entities/orders.entity';
 import { OrderApprovalStatusEnum } from '../orders/enums/order.status.enum';
+import { BusserDetailsDto } from './dto/busser-details.dto';
 
 @Injectable()
 export class BusserService {
-  // Tambahkan Logger untuk pencatatan yang lebih rapi
   private readonly logger = new Logger(BusserService.name);
 
   constructor(
@@ -80,33 +80,55 @@ export class BusserService {
      this.logger.log('Selesai menjalankan checkAndUpdateStatuses.');
   }
 
-  /**
-   * Mengambil semua data busser berdasarkan status.
-   */
-  async getBussersByStatus(status: BusserStatusEnum): Promise<BusserEntity[]> {
-    return this.busserRepository.find({
+
+  async getBussersByStatus(status: BusserStatusEnum): Promise<BusserDetailsDto[]> {
+    const bussers = await this.busserRepository.find({
       where: { status },
-      relations: ['order', 'order.customer', 'order.fleet'], // Sertakan data lengkap untuk frontend
+      relations: {
+        order: {
+          customer: true,
+          fleet: true,
+        },
+      },
     });
+
+    const bussersWithDetails: BusserDetailsDto[] = bussers.map(busser => {
+      if (!busser.order || !busser.order.fleet) {
+        this.logger.warn(`Melewati Order ID: ${busser.order?.id} karena data fleet tidak lengkap.`);
+        return {
+          ...busser,
+          days_late: 0,
+          late_fee_total: 0,
+        };
+      }
+
+      const today = new Date();
+      const returnDate = new Date(busser.order.start_date);
+      returnDate.setDate(returnDate.getDate() + busser.order.duration);
+
+      const daysLate = Math.floor((today.getTime() - returnDate.getTime()) / (1000 * 3600 * 24));
+      const lateFee = this.calculateLateFee(busser.order, daysLate);
+
+      return {
+        ...busser,
+        days_late: daysLate,
+        late_fee_total: lateFee,
+      };
+    });
+
+    return bussersWithDetails;
   }
 
-  /**
-   * Menghitung total biaya keterlambatan.
-   * Pastikan order yang di-pass sudah memuat relasi 'unit'.
-   */
+
   calculateLateFee(order: OrderEntity, daysLate: number): number {
     if (!order.fleet) {
-      // Tambahkan penanganan jika relasi unit tidak dimuat
-      throw new Error(`Unit relation for Order ID ${order.id} is not loaded.`);
+      throw new Error(`Fleet relation for Order ID ${order.id} is not loaded.`);
     }
     const dailyRate = order.fleet.price; 
     return daysLate * dailyRate;
   }
   
-  /**
-   * Untuk investigator mengambil tugas/bounty.
-   */
-  async assignTask(busserId: number, investigatorId: number): Promise<BusserEntity> {
+  async assignTask(busserId: number, investigatorId: number): Promise<BusserDetailsDto> {
     const busser = await this.busserRepository.findOne({ where: { id: busserId } });
     if (!busser || busser.status !== BusserStatusEnum.URGENT) {
       throw new NotFoundException(`Busser dengan ID ${busserId} tidak ditemukan atau tidak berstatus URGENT.`);
@@ -114,14 +136,37 @@ export class BusserService {
 
     busser.status = BusserStatusEnum.TINDAK_LANJUT;
     busser.investigator_id = investigatorId;
-    busser.status_updated_at = new Date();
-    
-    return this.busserRepository.save(busser);
-  }
+    await this.busserRepository.save(busser);
 
-  /**
-   * Menyelesaikan kasus busser.
-   */
+    const updatedBusser = await this.busserRepository.findOne({
+      where: { id: busserId },
+      // PERBAIKAN DI SINI: Gunakan format objek yang andal
+      relations: {
+        order: {
+          customer: true,
+          fleet: true,
+        },
+      },
+    });
+
+    if (!updatedBusser.order || !updatedBusser.order.fleet) {
+        this.logger.warn(`Data fleet untuk Order ID: ${updatedBusser.order?.id} tidak lengkap saat mengambil tugas.`);
+        return {
+            ...updatedBusser,
+            days_late: 0,
+            late_fee_total: 0,
+        };
+    }
+
+    const today = new Date();
+    const returnDate = new Date(updatedBusser.order.start_date);
+    returnDate.setDate(returnDate.getDate() + updatedBusser.order.duration);
+    const daysLate = Math.floor((today.getTime() - returnDate.getTime()) / (1000 * 3600 * 24));
+    const lateFee = this.calculateLateFee(updatedBusser.order, daysLate);
+
+    return { ...updatedBusser, days_late: daysLate, late_fee_total: lateFee };
+}
+
   async resolveBusser(busserId: number, notes: string): Promise<BusserEntity> {
     const busser = await this.busserRepository.findOne({ where: { id: busserId } });
      if (!busser) {
